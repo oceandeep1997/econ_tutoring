@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#FCFAF7"/>
+  <!-- calendar icon -->
+  <g fill="none" stroke="#2A7FF0" stroke-linecap="round">
+    <rect x="434" y="171" width="156" height="144" rx="24" stroke-width="14"/>
+    <line x1="466" y1="152" x2="466" y2="178" stroke-width="14"/>
+    <line x1="558" y1="152" x2="558" y2="178" stroke-width="14"/>
+    <line x1="466" y1="238" x2="558" y2="238" stroke-width="14"/>
+    <line x1="466" y1="270" x2="526" y2="270" stroke-width="14"/>
+  </g>
+  <path d="M434 195a24 24 0 0 1 24-24h108a24 24 0 0 1 24 24v26H434z" fill="#2A7FF0"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="512" y="466" font-size="92" font-weight="700" fill="#0B0B0B" letter-spacing="-1">Book Your session</text>
+    <text x="512" y="562" font-size="92" font-weight="700" fill="#0B0B0B" letter-spacing="-1">Now</text>
+    <text x="512" y="652" font-size="44" fill="#111">Secure your session today</text>
+  </g>
+  <rect x="160" y="734" width="704" height="132" rx="18" fill="#2A7FF0"/>
+  <text x="512" y="818" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="56" font-weight="500" fill="#FFF" text-anchor="middle">Schedule on Calendly</text>
+</svg>

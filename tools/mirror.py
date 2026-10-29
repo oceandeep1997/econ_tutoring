@@ -23,6 +23,12 @@ CDN_HOSTS = ["assets.squarespace.com", "static1.squarespace.com", "images.square
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
                     "(KHTML, like Gecko) Chrome/130.0 Safari/537.36"}
 OUT = os.getcwd()
+# Mirrored assets swapped for hand-made replacements in overrides/ (same layout, sharper).
+OVERRIDES = {
+    "assets/images.squarespace-cdn.com/content/v1/67043dda5c5d3c09db8d3332/"
+    "d005d955-610b-420c-83e5-c7ee3cf50803/ChatGPT+Image+4+sept+2025,+11_43_26.png":
+        "overrides/book-session.png",  # booking card: AI image with soft text -> 2048px render
+}
 HOSTS_RE = "|".join(re.escape(h) for h in CDN_HOSTS)
 # Matches https://host/path, //host/path and the JSON-escaped https:\/\/host\/path forms.
 URL_RE = re.compile(r'(?:https?:)?(?:\\?/){2}(' + HOSTS_RE + r')((?:\\?/[^\s"\'<>()\\,&]*)*)')
@@ -123,6 +129,8 @@ def rewrite_html(html):
             with open(dest, "wb") as f:
                 f.write(fetch(SITE + ref))
         html = html.replace(f'"{ref}', f'"{rel}')
+    for orig, repl in OVERRIDES.items():
+        html = html.replace(orig, repl)
     # Internal navigation -> flat .html files so it works under a /<repo>/ project path too.
     for route, fname in PAGES.items():
         r = re.escape(route.rstrip("/"))
