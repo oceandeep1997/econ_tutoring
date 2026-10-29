@@ -62,7 +62,11 @@ def download(host, path):
     dest = os.path.join(OUT, rel)
     try:
         if not os.path.exists(dest):
-            data = fetch(f"https://{host}{path.split('#')[0]}")
+            url = f"https://{host}{path.split('#')[0]}"
+            if host == "images.squarespace-cdn.com":
+                # Every ?format=<N>w variant maps to one local file, so fetch the original.
+                url = url.split("?")[0]
+            data = fetch(url)
             if rel.endswith(".css") or b"@font-face" in data[:2000]:
                 data = rewrite_css(data.decode("utf-8", "replace"), host, path).encode()
             os.makedirs(os.path.dirname(dest), exist_ok=True)
